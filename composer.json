@@ -1,0 +1,57 @@
+{
+    "name": "tcgunel/omnipay-paytr",
+    "type": "library",
+    "description": "Omnipay extension for PayTR",
+    "keywords": [
+        "paytr",
+        "omnipay",
+        "payment",
+        "gateway",
+        "3d secure",
+        "ödeme",
+        "cüzdan",
+        "bin sorgulama",
+        "link ile ödeme",
+        "kart ekleme",
+        "kayıtlı kartla ödeme"
+    ],
+    "homepage": "https://github.com/tcgunel/omnipay-paytr",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tolga Can Günel",
+            "email": "tlgcngnl@gmail.com"
+        },
+        {
+            "name": "Omnipay Contributors",
+            "homepage": "https://github.com/tcgunel/omnipay-paytr/contributors"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Omnipay\\Paytr\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Omnipay\\Paytr\\Tests\\": "tests"
+        }
+    },
+    "require": {
+        "php": "^7.3.0",
+        "league/omnipay": "^3",
+        "ext-json": "*",
+        "ext-simplexml": "*",
+        "ext-dom": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9",
+        "omnipay/tests": "^4",
+        "brianium/paratest": "*",
+        "fzaninotto/faker": "*"
+    },
+    "scripts": {
+        "test": "vendor/bin/paratest --processes 6",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    }
+}
