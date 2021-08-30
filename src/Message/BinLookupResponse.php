@@ -5,7 +5,7 @@ namespace Omnipay\Paytr\Message;
 use JsonException;
 use Omnipay\Common\Message\AbstractResponse;
 use Omnipay\Common\Message\RequestInterface;
-use Omnipay\Paytr\Constants\BinStatus;
+use Omnipay\Paytr\Constants\Status;
 use Omnipay\Paytr\Models\BinLookupResponseModel;
 use Psr\Http\Message\ResponseInterface;
 
@@ -36,7 +36,7 @@ class BinLookupResponse extends AbstractResponse
 			} catch (JsonException $e) {
 
 				$this->response = new BinLookupResponseModel([
-					"status"  => BinStatus::ERROR,
+					"status"  => Status::ERROR,
 					"err_msg" => $body,
 				]);
 
@@ -47,7 +47,7 @@ class BinLookupResponse extends AbstractResponse
 
 	public function isSuccessful(): bool
 	{
-		return $this->response->status === BinStatus::SUCCESS;
+		return $this->response->status === Status::SUCCESS;
 	}
 
 	public function getMessage(): string

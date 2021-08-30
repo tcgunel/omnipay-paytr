@@ -2,7 +2,7 @@
 
 namespace Omnipay\Paytr\Models;
 
-use Omnipay\Paytr\Constants\BinStatus;
+use Omnipay\Paytr\Constants\Status;
 use Omnipay\Paytr\Constants\Brand;
 use Omnipay\Paytr\Constants\CardType;
 use Omnipay\Paytr\Constants\YesNo;
@@ -13,7 +13,7 @@ class BinLookupResponseModel extends BaseModel
 	 * Status: Sorgulama sonucu.
 	 * success, error veya failed
 	 *
-	 * @see BinStatus
+	 * @see Status
 	 * @var string
 	 */
 	public $status;

@@ -2,7 +2,7 @@
 
 namespace Omnipay\Paytr\Constants;
 
-class BinStatus
+class Status
 {
 	public const SUCCESS = "success";
 

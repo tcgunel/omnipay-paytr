@@ -3,7 +3,7 @@
 namespace Omnipay\Paytr\Tests\Feature;
 
 use Omnipay\Common\Exception\InvalidCreditCardException;
-use Omnipay\Paytr\Constants\BinStatus;
+use Omnipay\Paytr\Constants\Status;
 use Omnipay\Paytr\Constants\Brand;
 use Omnipay\Paytr\Constants\CardType;
 use Omnipay\Paytr\Constants\YesNo;
@@ -72,7 +72,7 @@ class BinLookupTest extends TestCase
 		$this->assertTrue($response->isSuccessful());
 
 		$this->assertEquals(new BinLookupResponseModel([
-			'status'       => BinStatus::SUCCESS,
+			'status'       => Status::SUCCESS,
 			'cardType'     => CardType::CREDIT,
 			'businessCard' => YesNo::YES,
 			'bank'         => "QNB Finansbank",
@@ -91,7 +91,7 @@ class BinLookupTest extends TestCase
 		$this->assertFalse($response->isSuccessful());
 
 		$this->assertEquals(new BinLookupResponseModel([
-			'status'  => BinStatus::ERROR,
+			'status'  => Status::ERROR,
 			'err_msg' => "some kind of error occurred. care...",
 		]), $data);
 	}
