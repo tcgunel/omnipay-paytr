@@ -4,6 +4,16 @@ namespace Omnipay\Paytr\Traits;
 
 trait GettersSettersTrait
 {
+	public function getUserReference()
+	{
+		return $this->getParameter('userReference');
+	}
+
+	public function setUserReference($value)
+	{
+		return $this->setParameter('userReference', $value);
+	}
+
 	public function getMerchantId()
 	{
 		return $this->getParameter('merchantId');

@@ -1,0 +1,7 @@
+{
+  "merchantSalt": "salt",
+  "merchantKey": "key",
+  "merchantId": "id",
+  "cardReference": "ctoken",
+  "userReference": "utoken"
+}
