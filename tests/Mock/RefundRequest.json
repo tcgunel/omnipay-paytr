@@ -1,0 +1,7 @@
+{
+  "merchantSalt": "salt",
+  "merchantKey": "key",
+  "merchantId": "id",
+  "transactionId": "transactionId",
+  "amount": "9.99"
+}
