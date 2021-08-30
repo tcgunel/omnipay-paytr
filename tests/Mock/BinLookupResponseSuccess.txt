@@ -1,0 +1,11 @@
+HTTP/1.1 200 Created
+Server: Apache-Coyote/1.1
+PROXY_SERVER_INFO: host=iparatest.com
+SERVER_INFO: iparatest.com
+CORRELATION-ID: 2a1b9202663bc
+Content-Language: *
+Date: Fri, 04 Jul 2014 14:09:00 GMT
+Content-Type: application/json
+Content-Length: 393
+
+{"status": "success", "cardType": "credit", "businessCard": "y", "bank": "QNB Finansbank", "brand": "world"}

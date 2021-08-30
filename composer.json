@@ -40,9 +40,7 @@
     "require": {
         "php": "^7.3.0",
         "league/omnipay": "^3",
-        "ext-json": "*",
-        "ext-simplexml": "*",
-        "ext-dom": "*"
+        "ext-json": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "^9",

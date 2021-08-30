@@ -8,7 +8,7 @@ class Helper
 	 * @param $input
 	 * @param $var
 	 */
-	public static function format_cardExpireYear($input, &$var)
+	public static function format_cardExpireYear($input, &$var): void
 	{
 		$var = substr($input, -2);
 	}
@@ -17,7 +17,7 @@ class Helper
 	 * @param $input
 	 * @param $var
 	 */
-	public static function format_gsm($input, &$var)
+	public static function format_gsm($input, &$var): void
 	{
 		$var = preg_replace("/(\D+)/", "", $input);
 	}
@@ -26,7 +26,7 @@ class Helper
 	 * @param $input
 	 * @param $var
 	 */
-	public static function format_binNumber($input, &$var)
+	public static function format_bin_number($input, &$var)
 	{
 		$var = substr($input, 0, 6);
 	}
@@ -44,7 +44,7 @@ class Helper
 	/**
 	 * @param object|array $input
 	 */
-	public static function arrayUnsetRecursive(&$input)
+	public static function arrayUnsetRecursive(&$input): void
 	{
 		foreach ($input as $key => $value) {
 

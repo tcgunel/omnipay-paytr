@@ -1,0 +1,8 @@
+{
+  "merchantSalt": "salt",
+  "merchantKey": "key",
+  "merchantId": "id",
+  "card": {
+    "number": "5456165456165454"
+  }
+}
