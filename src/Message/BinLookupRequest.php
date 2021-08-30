@@ -51,16 +51,20 @@ class BinLookupRequest extends RemoteAbstractRequest
 		return $this->response = new BinLookupResponse($this, $data);
 	}
 
+	/**
+	 * @param BinLookupRequestModel $data
+	 * @return \Omnipay\Common\Message\ResponseInterface|BinLookupResponse
+	 */
 	public function sendData($data)
 	{
 		$httpResponse = $this->httpClient->request(
 			'POST',
 			$this->getEndpoint(),
-			array_merge((array)$data["headers"], [
+			[
 				'Content-Type' => 'application/json',
 				'Accept'       => 'application/json',
-			]),
-			json_encode($data["request_params"])
+			],
+			json_encode($data)
 		);
 
 		return $this->createResponse($httpResponse);
