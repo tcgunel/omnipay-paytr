@@ -4,6 +4,7 @@ namespace Omnipay\Paytr;
 
 use Omnipay\Common\AbstractGateway;
 use Omnipay\Common\Message\AbstractRequest;
+use Omnipay\Paytr\Message\PaymentInquiryRequest;
 use Omnipay\Paytr\Traits\GettersSettersTrait;
 use Omnipay\Paytr\Message\BinLookupRequest;
 
@@ -38,5 +39,10 @@ class Gateway extends AbstractGateway
 	public function binLookup(array $parameters = array()): AbstractRequest
 	{
 		return $this->createRequest(BinLookupRequest::class, $parameters);
+	}
+
+	public function paymentInquiry(array $parameters = array()): AbstractRequest
+	{
+		return $this->createRequest(PaymentInquiryRequest::class, $parameters);
 	}
 }
