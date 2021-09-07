@@ -40,7 +40,7 @@ class BinLookupTest extends TestCase
 		$expected = new BinLookupRequestModel([
 			'merchant_id' => "id",
 			'bin_number'  => '545616',
-			'paytr_token' => "vLbnVgqt47W69Pk3O3LPSMPeQewTFl5L/g6SzTebeL4=",
+			'paytr_token' => "eym7GF3gnQD1078YNpc6xF5DBega64CQ4/bwcuWIUK4=",
 		]);
 
 		self::assertEquals($expected, $data);
