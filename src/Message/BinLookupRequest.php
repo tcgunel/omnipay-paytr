@@ -61,10 +61,10 @@ class BinLookupRequest extends RemoteAbstractRequest
 			'POST',
 			$this->getEndpoint(),
 			[
-				'Content-Type' => 'application/json',
+				'Content-Type' => 'application/x-www-form-urlencoded',
 				'Accept'       => 'application/json',
 			],
-			json_encode($data)
+			http_build_query($data, null, '&')
 		);
 
 		return $this->createResponse($httpResponse);

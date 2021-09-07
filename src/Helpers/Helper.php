@@ -31,6 +31,40 @@ class Helper
 		$var = substr($input, 0, 6);
 	}
 
+	/**
+	 * @param $input
+	 * @param $var
+	 */
+	public static function format_businessCard($input, &$var)
+	{
+		$input = strtolower($input);
+
+		switch ($input){
+			case "y":
+				$var = true;
+				break;
+			case "n":
+				$var = false;
+		}
+	}
+
+	/**
+	 * @param $input
+	 * @param $var
+	 */
+	public static function format_allow_non3d($input, &$var)
+	{
+		$input = strtolower($input);
+
+		switch ($input){
+			case "y":
+				$var = true;
+				break;
+			case "n":
+				$var = false;
+		}
+	}
+
 	public static function hash($merchant_salt, $merchant_key, string $hash_string): string
 	{
 		return base64_encode(hash_hmac('sha256', $hash_string . $merchant_salt, $merchant_key, true));

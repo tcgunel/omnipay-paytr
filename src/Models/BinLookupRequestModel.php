@@ -32,7 +32,7 @@ class BinLookupRequestModel extends BaseModel
 
 	public function generateToken($salt, $key, $id): void
 	{
-		$hash_string = $this->bin_number . $id . $salt;
+		$hash_string = $this->bin_number . $id;
 
 		$this->paytr_token = Helper::hash($salt, $key, $hash_string);
 	}

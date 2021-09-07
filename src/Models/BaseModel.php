@@ -23,7 +23,7 @@ abstract class BaseModel
 
 	private function formatFields()
 	{
-		$fields = ["cardExpireMonth", "cardExpireYear", "bin_number"];
+		$fields = ["cardExpireMonth", "cardExpireYear", "bin_number", "businessCard", "allow_non3d"];
 
 		foreach ($fields as $field) {
 

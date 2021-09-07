@@ -5,7 +5,6 @@ namespace Omnipay\Paytr\Models;
 use Omnipay\Paytr\Constants\Status;
 use Omnipay\Paytr\Constants\Brand;
 use Omnipay\Paytr\Constants\CardType;
-use Omnipay\Paytr\Constants\YesNo;
 
 class BinLookupResponseModel extends BaseModel
 {
@@ -29,10 +28,8 @@ class BinLookupResponseModel extends BaseModel
 
 	/**
 	 * Şirket Kartı: Kartın şirket kartı olup olmadığı bilgisi
-	 * y / n
 	 *
-	 * @see YesNo
-	 * @var string
+	 * @var boolean
 	 */
 	public $businessCard;
 
@@ -53,6 +50,23 @@ class BinLookupResponseModel extends BaseModel
 	 * @var string
 	 */
 	public $brand;
+
+	/**
+	 * mastercard, visa etc.
+	 *
+	 * @var string
+	 */
+	public $schema;
+
+	/**
+	 * @var integer
+	 */
+	public $bankCode;
+
+	/**
+	 * @var boolean
+	 */
+	public $allow_non3d;
 
 	/**
 	 * Eğer sorguda bir hatanız varsa status değeri “error” döner.
