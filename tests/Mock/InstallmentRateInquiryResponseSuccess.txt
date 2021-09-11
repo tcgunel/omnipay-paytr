@@ -1,0 +1,11 @@
+HTTP/1.1 200 Created
+Server: Apache-Coyote/1.1
+PROXY_SERVER_INFO: host=iparatest.com
+SERVER_INFO: iparatest.com
+CORRELATION-ID: 2a1b9202663bc
+Content-Language: *
+Date: Fri, 04 Jul 2014 14:09:00 GMT
+Content-Type: application/json
+Content-Length: 393
+
+{"status":"success","request_id":"requestId","max_inst_non_bus":12,"oranlar":{"world":{"taksit_2":3.9199999999999999,"taksit_3":4.9100000000000001,"taksit_4":5.9000000000000004,"taksit_5":6.8799999999999999,"taksit_6":7.8700000000000001,"taksit_7":8.8599999999999994,"taksit_8":9.8399999999999999,"taksit_9":10.83,"taksit_10":11.82,"taksit_11":12.800000000000001,"taksit_12":13.789999999999999}}}

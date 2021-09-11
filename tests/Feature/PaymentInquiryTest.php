@@ -16,11 +16,6 @@ use Omnipay\Paytr\Tests\TestCase;
 
 class PaymentInquiryTest extends TestCase
 {
-	public function setUp(): void
-	{
-		parent::setUp();
-	}
-
 	/**
 	 * @throws \Omnipay\Common\Exception\InvalidRequestException
 	 * @throws InvalidCreditCardException
@@ -74,7 +69,7 @@ class PaymentInquiryTest extends TestCase
 
 		$this->assertEquals(new PaymentInquiryResponseModel([
 			'status'         => Status::SUCCESS,
-			'merchant_oid'   => 'transactionId',
+			'test_mode'      => 1,
 			'payment_amount' => "99.99",
 			'payment_total'  => "50.99",
 			'currency'       => Currency::EUR,
@@ -89,7 +84,7 @@ class PaymentInquiryTest extends TestCase
 		]), $data);
 	}
 
-	public function test_charge_response_api_error()
+	public function test_payment_inquiry_response_api_error()
 	{
 		$httpResponse = $this->getMockHttpResponse('PaymentInquiryResponseApiError.txt');
 

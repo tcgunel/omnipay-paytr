@@ -8,4 +8,4 @@ Date: Fri, 04 Jul 2014 14:09:00 GMT
 Content-Type: application/json
 Content-Length: 393
 
-{"status": "success", "test_mode": 1, "payment_amount": "99.99", "payment_total": "50.99", "currency": "EUR", "returns": [{"is_test": 1, "merchant_oid": "transactionId", "return_amount": "9.99"}]}
+[{"ctoken":"cardReference","last_4":"4358","month":"12","year":"24","c_bank":"Akbank","require_cvv":"0","c_name":"Example User","c_brand":"axess","c_type":"credit","businessCard":"n","initial":"4","schema":"VISA"}]

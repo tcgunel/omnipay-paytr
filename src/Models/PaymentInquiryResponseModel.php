@@ -11,6 +11,8 @@ class PaymentInquiryResponseModel extends BaseModel
 	{
 		parent::__construct($abstract);
 
+		$this->payment_amount *= 100;
+
 		if (!empty($this->returns)) {
 
 			foreach ($this->returns as $key => $return) {
@@ -23,6 +25,11 @@ class PaymentInquiryResponseModel extends BaseModel
 	}
 
 	/**
+	 * @var boolean
+	 */
+	public $test_mode;
+
+	/**
 	 * Status: Sorgulama sonucu.
 	 * success, error veya failed
 	 *
@@ -30,13 +37,6 @@ class PaymentInquiryResponseModel extends BaseModel
 	 * @var string
 	 */
 	public $status;
-
-	/**
-	 * Sorgulama talebi yapılan sipariş numarası.
-	 *
-	 * @var string
-	 */
-	public $merchant_oid;
 
 	/**
 	 * Sipariş Tutarı

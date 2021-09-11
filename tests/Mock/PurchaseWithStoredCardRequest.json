@@ -1,0 +1,23 @@
+{
+  "merchantSalt": "salt",
+  "merchantKey": "key",
+  "merchantId": "id",
+
+  "transactionId": "6123ad8ba9cb76123ad8ba9cb9",
+  "amount": 45.67,
+  "clientIp": "127.0.0.1",
+  "items": [
+    {
+      "name": "Perspiciatis et facilis tempore facilis.",
+      "description": "My notion was that she was talking. 'How CAN I have done that?' she thought. 'I must be a LITTLE larger, sir, if you like,' said the King and Queen of Hearts, carrying the King's crown on a.",
+      "quantity": 1,
+      "price": 45.67
+    }
+  ],
+  "secure": true,
+  "installment": 1,
+  "returnUrl": "https://iparatest.com/omnipay/paytr/usage/payment-success.php",
+  "cancelUrl": "https://iparatest.com/omnipay/paytr/usage/payment-failure.php",
+  "cardReference": "cardReference",
+  "userReference": "userReference"
+}

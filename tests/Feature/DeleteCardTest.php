@@ -13,11 +13,6 @@ use Omnipay\Paytr\Tests\TestCase;
 
 class DeleteCardTest extends TestCase
 {
-	public function setUp(): void
-	{
-		parent::setUp();
-	}
-
 	/**
 	 * @throws \Omnipay\Common\Exception\InvalidRequestException
 	 * @throws InvalidCreditCardException
@@ -75,7 +70,7 @@ class DeleteCardTest extends TestCase
 		]), $data);
 	}
 
-	public function test_charge_response_api_error()
+	public function test_delete_card_response_api_error()
 	{
 		$httpResponse = $this->getMockHttpResponse('DeleteCardResponseApiError.txt');
 

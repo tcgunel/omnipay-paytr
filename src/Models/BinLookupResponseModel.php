@@ -3,7 +3,7 @@
 namespace Omnipay\Paytr\Models;
 
 use Omnipay\Paytr\Constants\Status;
-use Omnipay\Paytr\Constants\Brand;
+use Omnipay\Paytr\Constants\CardSubBrand;
 use Omnipay\Paytr\Constants\CardType;
 
 class BinLookupResponseModel extends BaseModel
@@ -46,7 +46,7 @@ class BinLookupResponseModel extends BaseModel
 	 * (Kart bir program ortaklığına dahil değil ise değer “none” olur.)
 	 * Örnek: axess, bonus, cardfinans, combo, world, paraf, advantage, maximum
 	 *
-	 * @see Brand
+	 * @see CardSubBrand
 	 * @var string
 	 */
 	public $brand;

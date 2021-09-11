@@ -41,8 +41,8 @@ class RefundRequestModel extends BaseModel
 
 	public function generateToken($salt, $key, $id): void
 	{
-		$hash_string = $id . $this->merchant_oid . $this->return_amount;
+		$hash_string = $id . $this->merchant_oid . $this->return_amount . $salt;
 
-		$this->paytr_token = Helper::hash($salt, $key, $hash_string);
+		$this->paytr_token = Helper::hash($key, $hash_string);
 	}
 }

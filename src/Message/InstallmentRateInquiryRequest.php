@@ -5,22 +5,22 @@ namespace Omnipay\Paytr\Message;
 use Omnipay\Common\Exception\InvalidCreditCardException;
 use Omnipay\Common\Exception\InvalidRequestException;
 use Omnipay\Common\Message\ResponseInterface;
-use Omnipay\Paytr\Models\PaymentInquiryRequestModel;
+use Omnipay\Paytr\Models\InstallmentRateInquiryRequestModel;
 
-class PaymentInquiryRequest extends RemoteAbstractRequest
+class InstallmentRateInquiryRequest extends RemoteAbstractRequest
 {
-	protected $endpoint = "https://www.paytr.com/odeme/durum-sorgu";
+	protected $endpoint = "https://www.paytr.com/odeme/taksit-oranlari";
 
 	/**
 	 * @throws InvalidCreditCardException|InvalidRequestException
 	 */
-	public function getData(): PaymentInquiryRequestModel
+	public function getData(): InstallmentRateInquiryRequestModel
 	{
 		$this->validateAll();
 
-		$data = new PaymentInquiryRequestModel([
+		$data = new InstallmentRateInquiryRequestModel([
 			"merchant_id"  => $this->getMerchantId(),
-			"merchant_oid" => $this->getTransactionId(),
+			"request_id"  => $this->getRequestId(),
 		]);
 
 		$data->generateToken(...$this->settings);
@@ -35,17 +35,17 @@ class PaymentInquiryRequest extends RemoteAbstractRequest
 	{
 		$this->validateSettings();
 
-		$this->validate("transactionId");
+		$this->validate("requestId");
 	}
 
-	protected function createResponse($data): PaymentInquiryResponse
+	protected function createResponse($data): InstallmentRateInquiryResponse
 	{
-		return $this->response = new PaymentInquiryResponse($this, $data);
+		return $this->response = new InstallmentRateInquiryResponse($this, $data);
 	}
 
 	/**
-	 * @param PaymentInquiryRequestModel $data
-	 * @return ResponseInterface|PaymentInquiryResponse
+	 * @param InstallmentRateInquiryRequestModel $data
+	 * @return ResponseInterface|InstallmentRateInquiryResponse
 	 */
 	public function sendData($data)
 	{

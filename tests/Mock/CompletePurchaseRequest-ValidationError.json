@@ -1,0 +1,17 @@
+{
+  "merchantSalt": "salt",
+  "merchantKey": "key",
+  "merchantId": "id",
+
+  "merchant_oid": "transactionId",
+  "status": "success",
+  "total_amount": "1234",
+  "payment_type": "card",
+  "payment_amount": "1234",
+  "currency": "TL",
+  "installment_count": "1",
+  "merchant_id": "249583",
+  "test_mode": "1",
+  "failed_reason_code": "",
+  "failed_reason_msg": ""
+}

@@ -12,6 +12,12 @@ abstract class BaseModel
 
 			if (property_exists($this, $key)) {
 
+				if (is_string($arg)) {
+
+					$arg = trim($arg);
+
+				}
+
 				$this->$key = $arg;
 
 			}
@@ -23,7 +29,25 @@ abstract class BaseModel
 
 	private function formatFields()
 	{
-		$fields = ["cardExpireMonth", "cardExpireYear", "bin_number", "businessCard", "allow_non3d"];
+		$fields = [
+			"expiry_month",
+			"expiry_year",
+			"cvv",
+			"bin_number",
+			"businessCard",
+			"allow_non3d",
+			"test_mode",
+			"debug_on",
+			"user_ip",
+			"merchant_oid",
+			"email",
+			"user_name",
+			"user_address",
+			"user_phone",
+			"user_basket",
+			"installment_count",
+			"payment_amount",
+		];
 
 		foreach ($fields as $field) {
 

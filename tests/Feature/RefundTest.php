@@ -13,11 +13,6 @@ use Omnipay\Paytr\Tests\TestCase;
 
 class RefundTest extends TestCase
 {
-	public function setUp(): void
-	{
-		parent::setUp();
-	}
-
 	/**
 	 * @throws \Omnipay\Common\Exception\InvalidRequestException
 	 * @throws InvalidCreditCardException
@@ -78,7 +73,7 @@ class RefundTest extends TestCase
 		]), $data);
 	}
 
-	public function test_charge_response_api_error()
+	public function test_refund_response_api_error()
 	{
 		$httpResponse = $this->getMockHttpResponse('RefundResponseApiError.txt');
 

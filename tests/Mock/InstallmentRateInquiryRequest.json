@@ -1,0 +1,6 @@
+{
+  "merchantSalt": "salt",
+  "merchantKey": "key",
+  "merchantId": "id",
+  "requestId": "requestId"
+}

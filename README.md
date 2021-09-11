@@ -3,7 +3,7 @@
 [![PHP Composer](https://github.com/tcgunel/omnipay-paytr/actions/workflows/tests.yml/badge.svg)](https://github.com/tcgunel/omnipay-paytr/actions/workflows/tests.yml)
 
 # Omnipay Paytr Gateway
-Omnipay gateway for Paytr. All the methods of Paytr implemented for easy usage.
+Omnipay gateway for Paytr - Direct API. All the methods of Paytr implemented for easy usage.
 
 ## Requirements
 | PHP    | Package |
@@ -22,9 +22,21 @@ Please see the [Wiki](https://github.com/tcgunel/omnipay-paytr/wiki) page for de
 
 ## Methods
 #### Payment Services
- 
+
+* binLookup($options)
+* purchase($options) // Purchase with 3D, without 3D, store user card with payment, purchase with stored cards.
+* completePurchase($options) // Complete purchase.
+* paymentInquiry($options) // Inquire payment.
+* refund($options)
 
 #### Wallet Services
+
+* listCard($options)
+* deleteCard($options)
+
+#### Other Services
+
+* installmentRates($options) // Available installment rates for your Paytr account.
 
 
 ## Tests

@@ -4,7 +4,7 @@ namespace Omnipay\Paytr\Models;
 
 use Omnipay\Paytr\Helpers\Helper;
 
-class BinLookupRequestModel extends BaseModel
+class InstallmentRateInquiryRequestModel extends BaseModel
 {
 	/**
 	 * Mağaza no: PayTR tarafından size verilen Mağaza numarası
@@ -15,12 +15,12 @@ class BinLookupRequestModel extends BaseModel
 	public $merchant_id;
 
 	/**
-	 * BIN Numarası: Kart numarasının ilk 6 hanesi
+	 * User reference id.
 	 *
 	 * @required
 	 * @var string
 	 */
-	public $bin_number;
+	public $request_id;
 
 	/**
 	 * Paytr Token: İsteğin sizden geldiğine ve içeriğin değişmediğine emin olmamız için oluşturacağınız değerdir
@@ -32,7 +32,7 @@ class BinLookupRequestModel extends BaseModel
 
 	public function generateToken($salt, $key, $id): void
 	{
-		$hash_string = $this->bin_number . $id . $salt;
+		$hash_string = $id . $this->request_id . $salt;
 
 		$this->paytr_token = Helper::hash($key, $hash_string);
 	}

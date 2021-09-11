@@ -1,0 +1,18 @@
+{
+  "merchantSalt": "salt",
+  "merchantKey": "key",
+  "merchantId": "id",
+
+  "hash": "LqkSMvTmozAD+zLTj21CvP20rnJxitym5tb1sypQJZ4=",
+  "merchant_oid": "transactionId",
+  "status": "error",
+  "total_amount": "1234",
+  "payment_type": "card",
+  "payment_amount": "1234",
+  "currency": "TL",
+  "installment_count": "1",
+  "merchant_id": "249583",
+  "test_mode": "1",
+  "failed_reason_code": "009",
+  "failed_reason_msg": "some kind of error occurred. care..."
+}

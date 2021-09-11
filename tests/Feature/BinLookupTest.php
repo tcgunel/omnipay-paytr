@@ -4,7 +4,7 @@ namespace Omnipay\Paytr\Tests\Feature;
 
 use Omnipay\Common\Exception\InvalidCreditCardException;
 use Omnipay\Paytr\Constants\Status;
-use Omnipay\Paytr\Constants\Brand;
+use Omnipay\Paytr\Constants\CardSubBrand;
 use Omnipay\Paytr\Constants\CardType;
 use Omnipay\Paytr\Constants\YesNo;
 use Omnipay\Paytr\Message\BinLookupRequest;
@@ -15,11 +15,6 @@ use Omnipay\Paytr\Tests\TestCase;
 
 class BinLookupTest extends TestCase
 {
-	public function setUp(): void
-	{
-		parent::setUp();
-	}
-
 	/**
 	 * @throws \Omnipay\Common\Exception\InvalidRequestException
 	 * @throws InvalidCreditCardException
@@ -76,11 +71,14 @@ class BinLookupTest extends TestCase
 			'cardType'     => CardType::CREDIT,
 			'businessCard' => YesNo::YES,
 			'bank'         => "QNB Finansbank",
-			'brand'        => Brand::WORLD,
+			'brand'        => CardSubBrand::WORLD,
+			"schema"       => "MASTERCARD",
+			"bankCode"     => 111,
+			"allow_non3d"  => false
 		]), $data);
 	}
 
-	public function test_charge_response_api_error()
+	public function test_bin_lookup_response_api_error()
 	{
 		$httpResponse = $this->getMockHttpResponse('BinLookupResponseApiError.txt');
 

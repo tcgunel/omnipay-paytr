@@ -1,0 +1,43 @@
+{
+  "merchantSalt": "salt",
+  "merchantKey": "key",
+  "merchantId": "id",
+
+  "transactionId": "6123ad8ba9cb76123ad8ba9cb9",
+  "amount": null,
+  "card": {
+    "firstName": "Example",
+    "lastName": "User",
+    "number": "9792030394440796",
+    "expiryMonth": "12",
+    "expiryYear": "2099",
+    "cvv": "000",
+    "billingAddress1": "123 Billing St",
+    "billingAddress2": "Billsville",
+    "billingCity": "Billstown",
+    "billingPostcode": "12345",
+    "billingState": "CA",
+    "billingCountry": "TR",
+    "billingPhone": "5554443322",
+    "shippingAddress1": "123 Shipping St",
+    "shippingAddress2": "Shipsville",
+    "shippingCity": "Shipstown",
+    "shippingPostcode": "54321",
+    "shippingState": "NY",
+    "shippingCountry": "TR",
+    "shippingPhone": "5554443322"
+  },
+  "clientIp": "127.0.0.1",
+  "items": [
+    {
+      "name": "Perspiciatis et facilis tempore facilis.",
+      "description": "My notion was that she was talking. 'How CAN I have done that?' she thought. 'I must be a LITTLE larger, sir, if you like,' said the King and Queen of Hearts, carrying the King's crown on a.",
+      "quantity": 1,
+      "price": 12.34
+    }
+  ],
+  "secure": true,
+  "installment": 1,
+  "returnUrl": "https://iparatest.com/omnipay/paytr/usage/payment-success.php",
+  "cancelUrl": "https://iparatest.com/omnipay/paytr/usage/payment-failure.php"
+}

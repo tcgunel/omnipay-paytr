@@ -8,4 +8,4 @@ Date: Fri, 04 Jul 2014 14:09:00 GMT
 Content-Type: application/json
 Content-Length: 393
 
-{"status": "success", "cardType": "credit", "businessCard": "y", "bank": "QNB Finansbank", "brand": "world"}
+{"status": "success", "cardType": "credit", "businessCard": "y", "bank": "QNB Finansbank", "brand": "world", "schema": "MASTERCARD", "bankCode": 111, "allow_non3d": false}
