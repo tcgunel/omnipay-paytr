@@ -12,6 +12,13 @@ class PurchaseRequestModel extends BaseModel
     public function __construct(?array $abstract)
     {
         parent::__construct($abstract);
+
+	    // Purchase requests require non-standard currency value.
+		if (isset($this->currency) && $this->currency === "TRY"){
+
+			$this->currency = "TL";
+
+		}
     }
 
     /**
