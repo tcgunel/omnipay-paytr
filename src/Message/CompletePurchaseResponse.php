@@ -34,7 +34,7 @@ class CompletePurchaseResponse extends AbstractResponse
 
 	public function getMessage(): string
 	{
-		return $this->isSuccessful() ? "OK" : $this->getData()->fail_reason;
+		return "OK";
 	}
 
 	public function getCode(): string
