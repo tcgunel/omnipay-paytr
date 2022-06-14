@@ -37,12 +37,8 @@ class BinLookupRequest extends RemoteAbstractRequest
 	{
 		$this->validateSettings();
 
-		if (!Helper::validateLuhn($this->getCard()->getNumber())) {
-			throw new InvalidCreditCardException('Card number is invalid');
-		}
-
-		if (!is_null($this->getCard()->getNumber()) && !preg_match('/^\d{6,19}$/', $this->getCard()->getNumber())) {
-			throw new InvalidCreditCardException('Card number should have at least 6 to maximum of 19 digits');
+		if (!is_null($this->getCard()->getNumber()) && !preg_match('/^\d{8,19}$/', $this->getCard()->getNumber())) {
+			throw new InvalidCreditCardException('Card number should have at least 8 to maximum of 19 digits');
 		}
 	}
 
