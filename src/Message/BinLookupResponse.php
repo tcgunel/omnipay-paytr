@@ -6,6 +6,7 @@ use JsonException;
 use Omnipay\Common\Message\AbstractResponse;
 use Omnipay\Common\Message\RequestInterface;
 use Omnipay\Paytr\Constants\Status;
+use Omnipay\Paytr\Exceptions\OmnipayPaytrBinLookupException;
 use Omnipay\Paytr\Models\BinLookupResponseModel;
 use Psr\Http\Message\ResponseInterface;
 
@@ -33,14 +34,27 @@ class BinLookupResponse extends AbstractResponse
 
 				$this->response = new BinLookupResponseModel($data);
 
-			} catch (JsonException $e) {
+                if ($this->response->status === 'failed') {
+
+                    throw new OmnipayPaytrBinLookupException('Bin lookup failed.');
+
+                }
+
+            } catch (JsonException $e) {
 
 				$this->response = new BinLookupResponseModel([
 					"status"  => Status::ERROR,
 					"err_msg" => $body,
 				]);
 
-			}
+            } catch (OmnipayPaytrBinLookupException $e) {
+
+                $this->response = new BinLookupResponseModel([
+                    "status"  => Status::ERROR,
+                    "err_msg" => $e->getMessage(),
+                ]);
+
+            }
 
 		}
 	}
