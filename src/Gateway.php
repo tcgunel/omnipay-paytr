@@ -41,6 +41,8 @@ class Gateway extends AbstractGateway
 			"merchantKey"  => "",
 			"merchantSalt" => "",
 
+			"ref_id" => "",
+
 			"installment" => "1",
 
 			"paymentType" => [PaymentType::CARD, PaymentType::CARD_POINTS],

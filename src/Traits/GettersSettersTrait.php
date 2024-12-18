@@ -154,6 +154,16 @@ trait GettersSettersTrait
 		return $this->setParameter('clientIp', $value);
 	}
 
+	public function getRefId()
+	{
+		return $this->getParameter('refId');
+	}
+
+	public function setRefId($value)
+	{
+		return $this->setParameter('refId', $value);
+	}
+
 	public function getEndpoint()
 	{
 		return $this->endpoint;

@@ -55,6 +55,8 @@ class PurchaseRequest extends RemoteAbstractRequest
 			"ctoken"     => $this->getCardReference(),
 			"utoken"     => $this->getUserReference(),
 			"store_card" => $this->getStoreCard(),
+
+			"ref_id"     => $this->getRefId(),
 		]);
 
 		$data->generateToken(...$this->settings);

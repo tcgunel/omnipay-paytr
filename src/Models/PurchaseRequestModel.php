@@ -188,6 +188,13 @@ class PurchaseRequestModel extends BaseModel
     public $ctoken;
 
 	/**
+	 * İş ortaklığı ref id.
+	 *
+	 * @var string
+	 */
+    public $ref_id;
+
+	/**
 	 * @var boolean
 	 */
     public $store_card;
