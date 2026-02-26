@@ -62,9 +62,9 @@ class PurchaseResponse extends AbstractResponse implements RedirectResponseInter
 			}, 5000);
 		</script>';
 
-		$response->setContent(str_replace("</body>", "$script</body>", $response->getContent()));
+        $response->setContent(str_replace("</body>", $this->redirectSpinner() . "</body>", $response->getContent()));
 
-		$response->setContent(str_replace("</body>", $this->redirectSpinner() . "</body>", $response->getContent()));
+        $response->setContent(str_replace("</body>", "$script</body>", $response->getContent()));
 
 		return $response;
 	}
