@@ -13,12 +13,12 @@ class PurchaseRequestModel extends BaseModel
     {
         parent::__construct($abstract);
 
-	    // Purchase requests require non-standard currency value.
-		if (isset($this->currency) && $this->currency === "TRY"){
+        // Purchase requests require non-standard currency value.
+        if (isset($this->currency) && $this->currency === 'TRY') {
 
-			$this->currency = "TL";
+            $this->currency = 'TL';
 
-		}
+        }
     }
 
     /**
@@ -43,7 +43,7 @@ class PurchaseRequestModel extends BaseModel
      * @required
      * @var string
      */
-    public $email = "dummy-email@example";
+    public $email = 'dummy-email@example';
 
     /**
      * Ayraç olarak yalnızca nokta (.) gönderilmelidir.
@@ -149,25 +149,25 @@ class PurchaseRequestModel extends BaseModel
      * @required
      * @var string
      */
-    public $user_name = "";
+    public $user_name = '';
 
     /**
      * @required
      * @var string
      */
-    public $user_address = "";
+    public $user_address = '';
 
     /**
      * @required
      * @var string
      */
-    public $user_phone = "";
+    public $user_phone = '';
 
     /**
      * @required
      * @var string
      */
-    public $user_basket = "";
+    public $user_basket = '';
 
     /**
      * UTOKEN GÖNDERİLMEDİĞİ DURUMDA, BU KULLANICIYA AİT DAHA ÖNCEDEN KAYDEDİLMİŞ BİR KART OLMADIĞI VARSAYILIR
@@ -180,42 +180,42 @@ class PurchaseRequestModel extends BaseModel
      */
     public $utoken;
 
-	/**
-	 * Card reference id.
-	 *
-	 * @var string
-	 */
+    /**
+     * Card reference id.
+     *
+     * @var string
+     */
     public $ctoken;
 
-	/**
-	 * İş ortaklığı ref id.
-	 *
-	 * @var string
-	 */
+    /**
+     * İş ortaklığı ref id.
+     *
+     * @var string
+     */
     public $ref_id;
 
-	/**
-	 * @var boolean
-	 */
+    /**
+     * @var boolean
+     */
     public $store_card;
 
 
-	public function generateToken($salt, $key, $id)
-	{
-		$hash_string =
-			$this->merchant_id .
-			$this->user_ip .
-			$this->merchant_oid .
-			$this->email .
-			$this->payment_amount .
-			$this->payment_type .
-			$this->installment_count .
-			$this->currency .
-			$this->test_mode .
-			$this->non_3d .
-			$salt
-		;
+    public function generateToken($salt, $key, $id)
+    {
+        $hash_string =
+            $this->merchant_id .
+            $this->user_ip .
+            $this->merchant_oid .
+            $this->email .
+            $this->payment_amount .
+            $this->payment_type .
+            $this->installment_count .
+            $this->currency .
+            $this->test_mode .
+            $this->non_3d .
+            $salt
+        ;
 
-		$this->paytr_token = Helper::hash($key, $hash_string);
-	}
+        $this->paytr_token = Helper::hash($key, $hash_string);
+    }
 }

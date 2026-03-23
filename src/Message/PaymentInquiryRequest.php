@@ -9,56 +9,56 @@ use Omnipay\Paytr\Models\PaymentInquiryRequestModel;
 
 class PaymentInquiryRequest extends RemoteAbstractRequest
 {
-	protected $endpoint = "https://www.paytr.com/odeme/durum-sorgu";
+    protected $endpoint = 'https://www.paytr.com/odeme/durum-sorgu';
 
-	/**
-	 * @throws InvalidCreditCardException|InvalidRequestException
-	 */
-	public function getData(): PaymentInquiryRequestModel
-	{
-		$this->validateAll();
+    /**
+     * @throws InvalidCreditCardException|InvalidRequestException
+     */
+    public function getData(): PaymentInquiryRequestModel
+    {
+        $this->validateAll();
 
-		$data = new PaymentInquiryRequestModel([
-			"merchant_id"  => $this->getMerchantId(),
-			"merchant_oid" => $this->getTransactionId(),
-		]);
+        $data = new PaymentInquiryRequestModel([
+            'merchant_id' => $this->getMerchantId(),
+            'merchant_oid' => $this->getTransactionId(),
+        ]);
 
-		$data->generateToken(...$this->settings);
+        $data->generateToken(...$this->settings);
 
-		return $data;
-	}
+        return $data;
+    }
 
-	/**
-	 * @throws InvalidCreditCardException|InvalidRequestException
-	 */
-	protected function validateAll(): void
-	{
-		$this->validateSettings();
+    /**
+     * @throws InvalidCreditCardException|InvalidRequestException
+     */
+    protected function validateAll(): void
+    {
+        $this->validateSettings();
 
-		$this->validate("transactionId");
-	}
+        $this->validate('transactionId');
+    }
 
-	protected function createResponse($data): PaymentInquiryResponse
-	{
-		return $this->response = new PaymentInquiryResponse($this, $data);
-	}
+    protected function createResponse($data): PaymentInquiryResponse
+    {
+        return $this->response = new PaymentInquiryResponse($this, $data);
+    }
 
-	/**
-	 * @param PaymentInquiryRequestModel $data
-	 * @return ResponseInterface|PaymentInquiryResponse
-	 */
-	public function sendData($data)
-	{
-		$httpResponse = $this->httpClient->request(
-			'POST',
-			$this->getEndpoint(),
-			[
-				'Content-Type' => 'application/x-www-form-urlencoded',
-				'Accept'       => 'application/json',
-			],
-			http_build_query($data, null, '&')
-		);
+    /**
+     * @param PaymentInquiryRequestModel $data
+     * @return ResponseInterface|PaymentInquiryResponse
+     */
+    public function sendData($data)
+    {
+        $httpResponse = $this->httpClient->request(
+            'POST',
+            $this->getEndpoint(),
+            [
+                'Content-Type' => 'application/x-www-form-urlencoded',
+                'Accept' => 'application/json',
+            ],
+            http_build_query($data, null, '&')
+        );
 
-		return $this->createResponse($httpResponse);
-	}
+        return $this->createResponse($httpResponse);
+    }
 }

@@ -4,9 +4,9 @@ namespace Omnipay\Paytr\Constants;
 
 class Status
 {
-	public const SUCCESS = "success";
+    public const SUCCESS = 'success';
 
-	public const ERROR = "error";
+    public const ERROR = 'error';
 
-	public const FAILED = "failed";
+    public const FAILED = 'failed';
 }

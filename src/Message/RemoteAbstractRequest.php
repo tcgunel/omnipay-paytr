@@ -8,24 +8,24 @@ use Omnipay\Paytr\Traits\GettersSettersTrait;
 
 abstract class RemoteAbstractRequest extends AbstractRequest
 {
-	use GettersSettersTrait;
+    use GettersSettersTrait;
 
-	public $settings = [];
+    public $settings = [];
 
-	/**
-	 * @throws InvalidRequestException
-	 */
-	protected function validateSettings(): void
-	{
-		$this->validate("merchantId", "merchantKey", "merchantSalt");
+    /**
+     * @throws InvalidRequestException
+     */
+    protected function validateSettings(): void
+    {
+        $this->validate('merchantId', 'merchantKey', 'merchantSalt');
 
-		$this->settings = [$this->getMerchantSalt(), $this->getMerchantKey(), $this->getMerchantId()];
-	}
+        $this->settings = [$this->getMerchantSalt(), $this->getMerchantKey(), $this->getMerchantId()];
+    }
 
-	protected function get_card($key)
-	{
-		return $this->getCard() ? $this->getCard()->$key() : null;
-	}
+    protected function get_card($key)
+    {
+        return $this->getCard() ? $this->getCard()->$key() : null;
+    }
 
-	abstract protected function createResponse($data);
+    abstract protected function createResponse($data);
 }

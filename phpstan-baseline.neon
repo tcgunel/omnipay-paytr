@@ -1,0 +1,126 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Access to an undefined property Omnipay\\\\Paytr\\\\Gateway\\:\\:\\$endpoint\\.$#"
+			count: 1
+			path: src/Gateway.php
+
+		-
+			message: "#^PHPDoc tag @param for parameter \\$domElement with type DOMElement\\[Omnipay\\\\Paytr\\\\Helpers\\\\optional\\] is not subtype of native type DOMElement\\|null\\.$#"
+			count: 1
+			path: src/Helpers/XmlDomConstruct.php
+
+		-
+			message: "#^Parameter \\$domElement of method Omnipay\\\\Paytr\\\\Helpers\\\\XmlDomConstruct\\:\\:fromMixed\\(\\) has invalid type Omnipay\\\\Paytr\\\\Helpers\\\\optional\\.$#"
+			count: 1
+			path: src/Helpers/XmlDomConstruct.php
+
+		-
+			message: "#^Call to function is_null\\(\\) with string will always evaluate to false\\.$#"
+			count: 1
+			path: src/Message/BinLookupRequest.php
+
+		-
+			message: "#^Parameter \\#2 \\$numeric_prefix of function http_build_query expects string, null given\\.$#"
+			count: 1
+			path: src/Message/BinLookupRequest.php
+
+		-
+			message: "#^Method Omnipay\\\\Paytr\\\\Message\\\\BinLookupResponse\\:\\:getRedirectData\\(\\) should return array but returns null\\.$#"
+			count: 1
+			path: src/Message/BinLookupResponse.php
+
+		-
+			message: "#^Parameter \\#2 \\$numeric_prefix of function http_build_query expects string, null given\\.$#"
+			count: 1
+			path: src/Message/CardInquiryRequest.php
+
+		-
+			message: "#^Method Omnipay\\\\Paytr\\\\Message\\\\CardInquiryResponse\\:\\:getRedirectData\\(\\) should return array but returns null\\.$#"
+			count: 1
+			path: src/Message/CardInquiryResponse.php
+
+		-
+			message: "#^Access to an undefined property Omnipay\\\\Paytr\\\\Message\\\\CompletePurchaseRequest\\:\\:\\$endpoint\\.$#"
+			count: 1
+			path: src/Message/CompletePurchaseRequest.php
+
+		-
+			message: "#^Method Omnipay\\\\Paytr\\\\Message\\\\CompletePurchaseResponse\\:\\:getCode\\(\\) should return string but returns int\\.$#"
+			count: 1
+			path: src/Message/CompletePurchaseResponse.php
+
+		-
+			message: "#^Method Omnipay\\\\Paytr\\\\Message\\\\CompletePurchaseResponse\\:\\:getRedirectData\\(\\) should return array but returns null\\.$#"
+			count: 1
+			path: src/Message/CompletePurchaseResponse.php
+
+		-
+			message: "#^Property Omnipay\\\\Paytr\\\\Message\\\\CompletePurchaseResponse\\:\\:\\$request \\(Omnipay\\\\Paytr\\\\Message\\\\PurchaseRequest\\) does not accept Omnipay\\\\Common\\\\Message\\\\RequestInterface\\.$#"
+			count: 1
+			path: src/Message/CompletePurchaseResponse.php
+
+		-
+			message: "#^Parameter \\#2 \\$numeric_prefix of function http_build_query expects string, null given\\.$#"
+			count: 1
+			path: src/Message/DeleteCardRequest.php
+
+		-
+			message: "#^Method Omnipay\\\\Paytr\\\\Message\\\\DeleteCardResponse\\:\\:getRedirectData\\(\\) should return array but returns null\\.$#"
+			count: 1
+			path: src/Message/DeleteCardResponse.php
+
+		-
+			message: "#^Parameter \\#2 \\$numeric_prefix of function http_build_query expects string, null given\\.$#"
+			count: 1
+			path: src/Message/InstallmentRateInquiryRequest.php
+
+		-
+			message: "#^Method Omnipay\\\\Paytr\\\\Message\\\\InstallmentRateInquiryResponse\\:\\:getRedirectData\\(\\) should return array but returns null\\.$#"
+			count: 1
+			path: src/Message/InstallmentRateInquiryResponse.php
+
+		-
+			message: "#^Parameter \\#2 \\$numeric_prefix of function http_build_query expects string, null given\\.$#"
+			count: 1
+			path: src/Message/PaymentInquiryRequest.php
+
+		-
+			message: "#^Method Omnipay\\\\Paytr\\\\Message\\\\PaymentInquiryResponse\\:\\:getRedirectData\\(\\) should return array but returns null\\.$#"
+			count: 1
+			path: src/Message/PaymentInquiryResponse.php
+
+		-
+			message: "#^Expression on left side of \\?\\? is not nullable\\.$#"
+			count: 1
+			path: src/Message/PurchaseRequest.php
+
+		-
+			message: "#^Parameter \\#2 \\$numeric_prefix of function http_build_query expects string, null given\\.$#"
+			count: 1
+			path: src/Message/RefundRequest.php
+
+		-
+			message: "#^Method Omnipay\\\\Paytr\\\\Message\\\\RefundResponse\\:\\:getRedirectData\\(\\) should return array but returns null\\.$#"
+			count: 1
+			path: src/Message/RefundResponse.php
+
+		-
+			message: "#^Access to an undefined property Omnipay\\\\Paytr\\\\Message\\\\RemoteAbstractRequest\\:\\:\\$endpoint\\.$#"
+			count: 1
+			path: src/Message/RemoteAbstractRequest.php
+
+		-
+			message: "#^Ternary operator condition is always true\\.$#"
+			count: 1
+			path: src/Message/RemoteAbstractRequest.php
+
+		-
+			message: "#^Binary operation \"\\*\\=\" between string and 100 results in an error\\.$#"
+			count: 1
+			path: src/Models/PaymentInquiryResponseModel.php
+
+		-
+			message: "#^Property Omnipay\\\\Paytr\\\\Models\\\\PurchaseRequestModel\\:\\:\\$currency \\(string\\) in isset\\(\\) is not nullable\\.$#"
+			count: 1
+			path: src/Models/PurchaseRequestModel.php

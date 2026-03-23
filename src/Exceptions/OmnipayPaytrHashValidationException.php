@@ -2,6 +2,6 @@
 
 namespace Omnipay\Paytr\Exceptions;
 
-class OmnipayPaytrHashValidationException extends \Exception{
-
+class OmnipayPaytrHashValidationException extends \Exception
+{
 }

@@ -9,8 +9,8 @@ class PurchaseResponseModel extends BaseModel
      */
     public $fail_message;
 
-	public function generateToken($salt, $key, $id)
-	{
+    public function generateToken($salt, $key, $id)
+    {
 
-	}
+    }
 }

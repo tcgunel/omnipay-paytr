@@ -9,57 +9,57 @@ use Omnipay\Paytr\Models\RefundRequestModel;
 
 class RefundRequest extends RemoteAbstractRequest
 {
-	protected $endpoint = 'https://www.paytr.com/odeme/iade';
+    protected $endpoint = 'https://www.paytr.com/odeme/iade';
 
-	/**
-	 * @throws InvalidCreditCardException|InvalidRequestException
-	 */
-	public function getData(): RefundRequestModel
-	{
-		$this->validateAll();
+    /**
+     * @throws InvalidCreditCardException|InvalidRequestException
+     */
+    public function getData(): RefundRequestModel
+    {
+        $this->validateAll();
 
-		$data = new RefundRequestModel([
-			"merchant_id"   => $this->getMerchantId(),
-			"merchant_oid"  => $this->getTransactionId(),
-			"return_amount" => $this->getAmount(),
-		]);
+        $data = new RefundRequestModel([
+            'merchant_id' => $this->getMerchantId(),
+            'merchant_oid' => $this->getTransactionId(),
+            'return_amount' => $this->getAmount(),
+        ]);
 
-		$data->generateToken(...$this->settings);
+        $data->generateToken(...$this->settings);
 
-		return $data;
-	}
+        return $data;
+    }
 
-	/**
-	 * @throws InvalidCreditCardException|InvalidRequestException
-	 */
-	protected function validateAll(): void
-	{
-		$this->validateSettings();
+    /**
+     * @throws InvalidCreditCardException|InvalidRequestException
+     */
+    protected function validateAll(): void
+    {
+        $this->validateSettings();
 
-		$this->validate("transactionId", "amount");
-	}
+        $this->validate('transactionId', 'amount');
+    }
 
-	protected function createResponse($data): RefundResponse
-	{
-		return $this->response = new RefundResponse($this, $data);
-	}
+    protected function createResponse($data): RefundResponse
+    {
+        return $this->response = new RefundResponse($this, $data);
+    }
 
-	/**
-	 * @param RefundRequestModel $data
-	 * @return ResponseInterface|RefundResponse
-	 */
-	public function sendData($data)
-	{
-		$httpResponse = $this->httpClient->request(
-			'POST',
-			$this->getEndpoint(),
-			[
-				'Content-Type' => 'application/x-www-form-urlencoded',
-				'Accept'       => 'application/json',
-			],
-			http_build_query($data, null, '&')
-		);
+    /**
+     * @param RefundRequestModel $data
+     * @return ResponseInterface|RefundResponse
+     */
+    public function sendData($data)
+    {
+        $httpResponse = $this->httpClient->request(
+            'POST',
+            $this->getEndpoint(),
+            [
+                'Content-Type' => 'application/x-www-form-urlencoded',
+                'Accept' => 'application/json',
+            ],
+            http_build_query($data, null, '&')
+        );
 
-		return $this->createResponse($httpResponse);
-	}
+        return $this->createResponse($httpResponse);
+    }
 }

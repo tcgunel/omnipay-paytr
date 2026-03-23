@@ -13,80 +13,80 @@ use Omnipay\Paytr\Tests\TestCase;
 
 class RefundTest extends TestCase
 {
-	/**
-	 * @throws \Omnipay\Common\Exception\InvalidRequestException
-	 * @throws InvalidCreditCardException
-	 * @throws \JsonException
-	 */
-	public function test_refund_request()
-	{
-		$options = file_get_contents(__DIR__ . "/../Mock/RefundRequest.json");
+    /**
+     * @throws \Omnipay\Common\Exception\InvalidRequestException
+     * @throws InvalidCreditCardException
+     * @throws \JsonException
+     */
+    public function test_refund_request()
+    {
+        $options = file_get_contents(__DIR__ . '/../Mock/RefundRequest.json');
 
-		$options = json_decode($options, true, 512, JSON_THROW_ON_ERROR);
+        $options = json_decode($options, true, 512, JSON_THROW_ON_ERROR);
 
-		$request = new RefundRequest($this->getHttpClient(), $this->getHttpRequest());
+        $request = new RefundRequest($this->getHttpClient(), $this->getHttpRequest());
 
-		$request->initialize($options);
+        $request->initialize($options);
 
-		$data = $request->getData();
+        $data = $request->getData();
 
-		$expected = new RefundRequestModel([
-			"merchant_id"   => "id",
-			"merchant_oid"  => "transactionId",
-			"return_amount" => "9.99",
-			"paytr_token"   => "vcLAJjhDuf7fn5IcKFrx55vuNr82dgFSIXLufQtOLzM=",
-		]);
+        $expected = new RefundRequestModel([
+            'merchant_id' => 'id',
+            'merchant_oid' => 'transactionId',
+            'return_amount' => '9.99',
+            'paytr_token' => 'vcLAJjhDuf7fn5IcKFrx55vuNr82dgFSIXLufQtOLzM=',
+        ]);
 
-		self::assertEquals($expected, $data);
-	}
+        self::assertEquals($expected, $data);
+    }
 
-	public function test_refund_request_validation_error()
-	{
-		$options = file_get_contents(__DIR__ . "/../Mock/RefundRequest-ValidationError.json");
+    public function test_refund_request_validation_error()
+    {
+        $options = file_get_contents(__DIR__ . '/../Mock/RefundRequest-ValidationError.json');
 
-		$options = json_decode($options, true, 512, JSON_THROW_ON_ERROR);
+        $options = json_decode($options, true, 512, JSON_THROW_ON_ERROR);
 
-		$request = new RefundRequest($this->getHttpClient(), $this->getHttpRequest());
+        $request = new RefundRequest($this->getHttpClient(), $this->getHttpRequest());
 
-		$request->initialize($options);
+        $request->initialize($options);
 
-		$this->expectException(InvalidRequestException::class);
+        $this->expectException(InvalidRequestException::class);
 
-		$request->getData();
-	}
+        $request->getData();
+    }
 
-	public function test_refund_response()
-	{
-		$httpResponse = $this->getMockHttpResponse('RefundResponseSuccess.txt');
+    public function test_refund_response()
+    {
+        $httpResponse = $this->getMockHttpResponse('RefundResponseSuccess.txt');
 
-		$response = new RefundResponse($this->getMockRequest(), $httpResponse);
+        $response = new RefundResponse($this->getMockRequest(), $httpResponse);
 
-		$data = $response->getData();
+        $data = $response->getData();
 
-		$this->assertTrue($response->isSuccessful());
+        $this->assertTrue($response->isSuccessful());
 
-		$this->assertEquals(new RefundResponseModel([
-			'status'        => Status::SUCCESS,
-			'is_test'       => 1,
-			'merchant_oid'  => "transactionId",
-			'return_amount' => "9.99",
-		]), $data);
-	}
+        $this->assertEquals(new RefundResponseModel([
+            'status' => Status::SUCCESS,
+            'is_test' => 1,
+            'merchant_oid' => 'transactionId',
+            'return_amount' => '9.99',
+        ]), $data);
+    }
 
-	public function test_refund_response_api_error()
-	{
-		$httpResponse = $this->getMockHttpResponse('RefundResponseApiError.txt');
+    public function test_refund_response_api_error()
+    {
+        $httpResponse = $this->getMockHttpResponse('RefundResponseApiError.txt');
 
-		$response = new RefundResponse($this->getMockRequest(), $httpResponse);
+        $response = new RefundResponse($this->getMockRequest(), $httpResponse);
 
-		$data = $response->getData();
+        $data = $response->getData();
 
-		$this->assertFalse($response->isSuccessful());
+        $this->assertFalse($response->isSuccessful());
 
-		$this->assertEquals(new RefundResponseModel([
-			'status'  => Status::ERROR,
-			'err_no'  => "009",
-			'err_msg' => "some kind of error occurred. care...",
-		]), $data);
-	}
+        $this->assertEquals(new RefundResponseModel([
+            'status' => Status::ERROR,
+            'err_no' => '009',
+            'err_msg' => 'some kind of error occurred. care...',
+        ]), $data);
+    }
 }

@@ -4,8 +4,6 @@ namespace Omnipay\Paytr\Message;
 
 use Omnipay\Common\Message\AbstractResponse;
 use Omnipay\Common\Message\RedirectResponseInterface;
-use Symfony\Component\HttpFoundation\RedirectResponse as HttpRedirectResponse;
-use Symfony\Component\HttpFoundation\Response as HttpResponse;
 
 /**
  * Paytr Enrolment Response
@@ -14,44 +12,44 @@ use Symfony\Component\HttpFoundation\Response as HttpResponse;
  */
 class PurchaseResponse extends AbstractResponse implements RedirectResponseInterface
 {
-	public function isSuccessful(): bool
-	{
-		return false;
-	}
+    public function isSuccessful(): bool
+    {
+        return false;
+    }
 
-	public function isRedirect(): bool
-	{
-		return true;
-	}
+    public function isRedirect(): bool
+    {
+        return true;
+    }
 
-	public function getRedirectUrl()
-	{
-		/** @var PurchaseRequest $request */
-		$request = $this->getRequest();
+    public function getRedirectUrl()
+    {
+        /** @var PurchaseRequest $request */
+        $request = $this->getRequest();
 
-		return $request->getEndpoint();
-	}
+        return $request->getEndpoint();
+    }
 
-	public function getRedirectMethod(): string
-	{
-		return 'POST';
-	}
+    public function getRedirectMethod(): string
+    {
+        return 'POST';
+    }
 
-	/**
-	 * @throws \JsonException
-	 */
-	public function getRedirectData(): array
-	{
-		return (array)$this->getData();
-	}
+    /**
+     * @throws \JsonException
+     */
+    public function getRedirectData(): array
+    {
+        return (array) $this->getData();
+    }
 
-	public function getRedirectResponse()
-	{
-		$response = parent::getRedirectResponse();
+    public function getRedirectResponse()
+    {
+        $response = parent::getRedirectResponse();
 
-		$response->setContent(str_replace("<body", "<body style='color:#FFF'", $response->getContent()));
+        $response->setContent(str_replace('<body', "<body style='color:#FFF'", $response->getContent()));
 
-		$script = '<script>
+        $script = '<script>
 			document.forms[0].style.display = "none";
 	        document.getElementsByTagName("section")[0].style.display = "block";
 	        
@@ -62,16 +60,16 @@ class PurchaseResponse extends AbstractResponse implements RedirectResponseInter
 			}, 5000);
 		</script>';
 
-        $response->setContent(str_replace("</body>", $this->redirectSpinner() . "</body>", $response->getContent()));
+        $response->setContent(str_replace('</body>', $this->redirectSpinner() . '</body>', $response->getContent()));
 
-        $response->setContent(str_replace("</body>", "$script</body>", $response->getContent()));
+        $response->setContent(str_replace('</body>', "$script</body>", $response->getContent()));
 
-		return $response;
-	}
+        return $response;
+    }
 
-	protected function redirectSpinner(): string
-	{
-		$css = '<style>
+    protected function redirectSpinner(): string
+    {
+        $css = '<style>
 					section {
 					  width: 174px;
 					  margin: 0 auto;
@@ -119,7 +117,7 @@ class PurchaseResponse extends AbstractResponse implements RedirectResponseInter
 					}
 </style>';
 
-		$html = '<section>
+        $html = '<section>
 		  <svg class="spinner" width="174px" height="174px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
 		     <circle class="path" fill="transparent" stroke-width="2" cx="33" cy="33" r="30" stroke="url(#gradient)"/>
 		       <linearGradient id="gradient">
@@ -135,7 +133,7 @@ class PurchaseResponse extends AbstractResponse implements RedirectResponseInter
 		  </svg> 
 		</section>';
 
-		return $css . $html;
-	}
+        return $css . $html;
+    }
 
 }

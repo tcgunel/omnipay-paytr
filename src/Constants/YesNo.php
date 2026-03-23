@@ -4,7 +4,7 @@ namespace Omnipay\Paytr\Constants;
 
 class YesNo
 {
-	public const YES = "y";
+    public const YES = 'y';
 
-	public const NO = "n";
+    public const NO = 'n';
 }

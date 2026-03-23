@@ -8,56 +8,56 @@ use Omnipay\Paytr\Models\CardInquiryRequestModel;
 
 class CardInquiryRequest extends RemoteAbstractRequest
 {
-	protected $endpoint = "https://www.paytr.com/odeme/capi/list";
+    protected $endpoint = 'https://www.paytr.com/odeme/capi/list';
 
-	/**
-	 * @throws InvalidCreditCardException|InvalidRequestException
-	 */
-	public function getData(): CardInquiryRequestModel
-	{
-		$this->validateAll();
+    /**
+     * @throws InvalidCreditCardException|InvalidRequestException
+     */
+    public function getData(): CardInquiryRequestModel
+    {
+        $this->validateAll();
 
-		$data = new CardInquiryRequestModel([
-			"merchant_id" => $this->getMerchantId(),
-			"utoken"  => $this->getUserReference(),
-		]);
+        $data = new CardInquiryRequestModel([
+            'merchant_id' => $this->getMerchantId(),
+            'utoken' => $this->getUserReference(),
+        ]);
 
-		$data->generateToken(...$this->settings);
+        $data->generateToken(...$this->settings);
 
-		return $data;
-	}
+        return $data;
+    }
 
-	/**
-	 * @throws InvalidCreditCardException|InvalidRequestException
-	 */
-	protected function validateAll(): void
-	{
-		$this->validateSettings();
+    /**
+     * @throws InvalidCreditCardException|InvalidRequestException
+     */
+    protected function validateAll(): void
+    {
+        $this->validateSettings();
 
-		$this->validate("userReference");
-	}
+        $this->validate('userReference');
+    }
 
-	protected function createResponse($data): CardInquiryResponse
-	{
-		return $this->response = new CardInquiryResponse($this, $data);
-	}
+    protected function createResponse($data): CardInquiryResponse
+    {
+        return $this->response = new CardInquiryResponse($this, $data);
+    }
 
-	/**
-	 * @param CardInquiryRequestModel $data
-	 * @return \Omnipay\Common\Message\ResponseInterface|CardInquiryResponse
-	 */
-	public function sendData($data)
-	{
-		$httpResponse = $this->httpClient->request(
-			'POST',
-			$this->getEndpoint(),
-			[
-				'Content-Type' => 'application/x-www-form-urlencoded',
-				'Accept'       => 'application/json',
-			],
-			http_build_query($data, null, '&')
-		);
+    /**
+     * @param CardInquiryRequestModel $data
+     * @return \Omnipay\Common\Message\ResponseInterface|CardInquiryResponse
+     */
+    public function sendData($data)
+    {
+        $httpResponse = $this->httpClient->request(
+            'POST',
+            $this->getEndpoint(),
+            [
+                'Content-Type' => 'application/x-www-form-urlencoded',
+                'Accept' => 'application/json',
+            ],
+            http_build_query($data, null, '&')
+        );
 
-		return $this->createResponse($httpResponse);
-	}
+        return $this->createResponse($httpResponse);
+    }
 }

@@ -14,47 +14,47 @@ use Omnipay\Paytr\Models\CompletePurchaseRequestModel;
  */
 class CompletePurchaseResponse extends AbstractResponse
 {
-	protected $response;
+    protected $response;
 
-	protected $request;
+    protected $request;
 
-	public function __construct(RequestInterface $request, $data)
-	{
-		parent::__construct($request, $data);
+    public function __construct(RequestInterface $request, $data)
+    {
+        parent::__construct($request, $data);
 
-		$this->request = $request;
+        $this->request = $request;
 
-		$this->response = $data;
-	}
+        $this->response = $data;
+    }
 
-	public function isSuccessful(): bool
-	{
-		return $this->getData()->status === Status::SUCCESS && $this->getData()->hash === $this->getData()->confirmation_hash;
-	}
+    public function isSuccessful(): bool
+    {
+        return $this->getData()->status === Status::SUCCESS && $this->getData()->hash === $this->getData()->confirmation_hash;
+    }
 
-	public function getMessage(): string
-	{
-		return "OK";
-	}
+    public function getMessage(): string
+    {
+        return 'OK';
+    }
 
-	public function getCode(): string
-	{
-		return $this->getData()->fail_code;
-	}
+    public function getCode(): string
+    {
+        return $this->getData()->fail_code;
+    }
 
-	public function getData(): CompletePurchaseRequestModel
-	{
-		return $this->response;
-	}
+    public function getData(): CompletePurchaseRequestModel
+    {
+        return $this->response;
+    }
 
-	public function getRedirectData()
-	{
-		return null;
-	}
+    public function getRedirectData()
+    {
+        return null;
+    }
 
-	public function getRedirectUrl(): string
-	{
-		return '';
-	}
+    public function getRedirectUrl(): string
+    {
+        return '';
+    }
 
 }

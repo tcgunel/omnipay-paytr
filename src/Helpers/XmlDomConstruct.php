@@ -12,7 +12,6 @@ use DOMElement;
  */
 class XmlDomConstruct extends DOMDocument
 {
-
     /**
      * Constructs elements and texts from an array or string.
      * The array can contain an element's name in the index part
@@ -78,11 +77,11 @@ class XmlDomConstruct extends DOMDocument
         } else {
 
             if ($mixed === false) {
-                $mixed = "false";
+                $mixed = 'false';
             }
 
             if ($mixed === true) {
-                $mixed = "true";
+                $mixed = 'true';
             }
 
             $domElement->appendChild($this->createTextNode($mixed));

@@ -11,62 +11,62 @@ use Psr\Http\Message\ResponseInterface;
 
 class InstallmentRateInquiryResponse extends AbstractResponse
 {
-	protected $response;
+    protected $response;
 
-	protected $request;
+    protected $request;
 
-	public function __construct(RequestInterface $request, $data)
-	{
-		parent::__construct($request, $data);
+    public function __construct(RequestInterface $request, $data)
+    {
+        parent::__construct($request, $data);
 
-		$this->request = $request;
+        $this->request = $request;
 
-		$this->response = $data;
+        $this->response = $data;
 
-		if ($data instanceof ResponseInterface) {
+        if ($data instanceof ResponseInterface) {
 
-			$body = (string)$data->getBody();
+            $body = (string) $data->getBody();
 
-			try {
+            try {
 
-				$data = json_decode($body, true, 512, JSON_THROW_ON_ERROR);
+                $data = json_decode($body, true, 512, JSON_THROW_ON_ERROR);
 
-				$this->response = new InstallmentRateInquiryResponseModel($data);
+                $this->response = new InstallmentRateInquiryResponseModel($data);
 
-			} catch (JsonException $e) {
+            } catch (JsonException $e) {
 
-				$this->response = new InstallmentRateInquiryResponseModel([
-					"status"  => Status::ERROR,
-					"err_msg" => $body,
-				]);
+                $this->response = new InstallmentRateInquiryResponseModel([
+                    'status' => Status::ERROR,
+                    'err_msg' => $body,
+                ]);
 
-			}
+            }
 
-		}
-	}
+        }
+    }
 
-	public function isSuccessful(): bool
-	{
-		return $this->response->status === Status::SUCCESS;
-	}
+    public function isSuccessful(): bool
+    {
+        return $this->response->status === Status::SUCCESS;
+    }
 
-	public function getMessage(): string
-	{
-		return $this->response->err_msg;
-	}
+    public function getMessage(): string
+    {
+        return $this->response->err_msg;
+    }
 
-	public function getData(): InstallmentRateInquiryResponseModel
-	{
-		return $this->response;
-	}
+    public function getData(): InstallmentRateInquiryResponseModel
+    {
+        return $this->response;
+    }
 
-	public function getRedirectData()
-	{
-		return null;
-	}
+    public function getRedirectData()
+    {
+        return null;
+    }
 
-	public function getRedirectUrl(): string
-	{
-		return '';
-	}
+    public function getRedirectUrl(): string
+    {
+        return '';
+    }
 }

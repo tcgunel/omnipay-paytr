@@ -11,77 +11,77 @@ use Psr\Http\Message\ResponseInterface;
 
 class CardInquiryResponse extends AbstractResponse
 {
-	protected $response;
+    protected $response;
 
-	protected $request;
+    protected $request;
 
-	public function __construct(RequestInterface $request, $data)
-	{
-		parent::__construct($request, $data);
+    public function __construct(RequestInterface $request, $data)
+    {
+        parent::__construct($request, $data);
 
-		$this->request = $request;
+        $this->request = $request;
 
-		//$this->response = $data;
+        //$this->response = $data;
 
-		if ($data instanceof ResponseInterface) {
+        if ($data instanceof ResponseInterface) {
 
-			$body = (string)$data->getBody();
+            $body = (string) $data->getBody();
 
-			try {
+            try {
 
-				$data = json_decode($body, true, 512, JSON_THROW_ON_ERROR);
+                $data = json_decode($body, true, 512, JSON_THROW_ON_ERROR);
 
-				if (!isset($data["status"])) {
+                if (!isset($data['status'])) {
 
-					foreach ($data as $datum) {
+                    foreach ($data as $datum) {
 
-						$this->response[] = new CardInquiryResponseModel($datum);
+                        $this->response[] = new CardInquiryResponseModel($datum);
 
-					}
+                    }
 
-				}else{
+                } else {
 
-					$this->response = new CardInquiryResponseModel($data);
+                    $this->response = new CardInquiryResponseModel($data);
 
-				}
+                }
 
-			} catch (JsonException $e) {
+            } catch (JsonException $e) {
 
-				$this->response = new CardInquiryResponseModel([
-					"status"  => Status::ERROR,
-					"err_msg" => $body,
-				]);
+                $this->response = new CardInquiryResponseModel([
+                    'status' => Status::ERROR,
+                    'err_msg' => $body,
+                ]);
 
-			}
+            }
 
-		}
-	}
+        }
+    }
 
-	public function isSuccessful(): bool
-	{
-		return is_array($this->response) && isset($this->response[0]);
-	}
+    public function isSuccessful(): bool
+    {
+        return is_array($this->response) && isset($this->response[0]);
+    }
 
-	public function getMessage(): ?string
-	{
-		return !is_array($this->response) ? $this->response->err_msg : null;
-	}
+    public function getMessage(): ?string
+    {
+        return !is_array($this->response) ? $this->response->err_msg : null;
+    }
 
-	/**
-	 * @return array|mixed|CardInquiryResponseModel
-	 */
-	public function getData()
-	{
-		return $this->response;
-	}
+    /**
+     * @return array|mixed|CardInquiryResponseModel
+     */
+    public function getData()
+    {
+        return $this->response;
+    }
 
-	public function getRedirectData()
-	{
-		return null;
-	}
+    public function getRedirectData()
+    {
+        return null;
+    }
 
-	public function getRedirectUrl(): string
-	{
-		return '';
-	}
+    public function getRedirectUrl(): string
+    {
+        return '';
+    }
 }

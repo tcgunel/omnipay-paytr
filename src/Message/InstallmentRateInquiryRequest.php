@@ -9,56 +9,56 @@ use Omnipay\Paytr\Models\InstallmentRateInquiryRequestModel;
 
 class InstallmentRateInquiryRequest extends RemoteAbstractRequest
 {
-	protected $endpoint = "https://www.paytr.com/odeme/taksit-oranlari";
+    protected $endpoint = 'https://www.paytr.com/odeme/taksit-oranlari';
 
-	/**
-	 * @throws InvalidCreditCardException|InvalidRequestException
-	 */
-	public function getData(): InstallmentRateInquiryRequestModel
-	{
-		$this->validateAll();
+    /**
+     * @throws InvalidCreditCardException|InvalidRequestException
+     */
+    public function getData(): InstallmentRateInquiryRequestModel
+    {
+        $this->validateAll();
 
-		$data = new InstallmentRateInquiryRequestModel([
-			"merchant_id"  => $this->getMerchantId(),
-			"request_id"  => $this->getRequestId(),
-		]);
+        $data = new InstallmentRateInquiryRequestModel([
+            'merchant_id' => $this->getMerchantId(),
+            'request_id' => $this->getRequestId(),
+        ]);
 
-		$data->generateToken(...$this->settings);
+        $data->generateToken(...$this->settings);
 
-		return $data;
-	}
+        return $data;
+    }
 
-	/**
-	 * @throws InvalidCreditCardException|InvalidRequestException
-	 */
-	protected function validateAll(): void
-	{
-		$this->validateSettings();
+    /**
+     * @throws InvalidCreditCardException|InvalidRequestException
+     */
+    protected function validateAll(): void
+    {
+        $this->validateSettings();
 
-		$this->validate("requestId");
-	}
+        $this->validate('requestId');
+    }
 
-	protected function createResponse($data): InstallmentRateInquiryResponse
-	{
-		return $this->response = new InstallmentRateInquiryResponse($this, $data);
-	}
+    protected function createResponse($data): InstallmentRateInquiryResponse
+    {
+        return $this->response = new InstallmentRateInquiryResponse($this, $data);
+    }
 
-	/**
-	 * @param InstallmentRateInquiryRequestModel $data
-	 * @return ResponseInterface|InstallmentRateInquiryResponse
-	 */
-	public function sendData($data)
-	{
-		$httpResponse = $this->httpClient->request(
-			'POST',
-			$this->getEndpoint(),
-			[
-				'Content-Type' => 'application/x-www-form-urlencoded',
-				'Accept'       => 'application/json',
-			],
-			http_build_query($data, null, '&')
-		);
+    /**
+     * @param InstallmentRateInquiryRequestModel $data
+     * @return ResponseInterface|InstallmentRateInquiryResponse
+     */
+    public function sendData($data)
+    {
+        $httpResponse = $this->httpClient->request(
+            'POST',
+            $this->getEndpoint(),
+            [
+                'Content-Type' => 'application/x-www-form-urlencoded',
+                'Accept' => 'application/json',
+            ],
+            http_build_query($data, null, '&')
+        );
 
-		return $this->createResponse($httpResponse);
-	}
+        return $this->createResponse($httpResponse);
+    }
 }
