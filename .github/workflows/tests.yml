@@ -1,48 +1,68 @@
-name: tests
+name: Tests
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
     paths-ignore:
-      - '**/README.md'
+      - '**/*.md'
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
-
-  test:
-    runs-on: ${{ matrix.os }}
+  tests:
+    runs-on: ubuntu-latest
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
-        os: [ubuntu-latest]
-        php: [7.3,8.0.12,8.1.3]
+        php: ['8.3', '8.4']
         dependency-version: [prefer-lowest, prefer-stable]
-        include:
-          - testbench: 5.*
 
-    name: P${{ matrix.php }} - L${{ matrix.level }} - ${{ matrix.dependency-version }} - ${{ matrix.os }}
+    name: PHP ${{ matrix.php }} - ${{ matrix.dependency-version }}
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.composer/cache/files
-          key: dependencies-laravel-${{ matrix.laravel }}-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
+        uses: actions/checkout@v4
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
-          extensions: dom, curl, mbstring, zip, pcntl, bcmath, intl, exif
+          extensions: dom, curl, mbstring, zip, pcntl, bcmath, intl, simplexml
+          coverage: none
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v4
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
+          restore-keys: ${{ runner.os }}-php-${{ matrix.php }}-composer-
+
+      - name: Install dependencies
+        run: composer update --${{ matrix.dependency-version }} --no-interaction --no-progress
+
+      - name: Run tests
+        run: vendor/bin/phpunit --no-coverage
+
+  code-quality:
+    runs-on: ubuntu-latest
+    name: Code Quality
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: dom, curl, mbstring, zip, pcntl, bcmath, intl, simplexml
           coverage: none
 
       - name: Install dependencies
-        run:
-          composer update --no-interaction --verbose
+        run: composer update --prefer-stable --no-interaction --no-progress
 
-      - name: Execute tests
-        run: composer test
+      - name: Run PHPStan
+        run: vendor/bin/phpstan analyse --no-progress
+
+      - name: Run Pint
+        run: vendor/bin/pint --test
