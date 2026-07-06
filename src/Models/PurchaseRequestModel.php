@@ -199,6 +199,28 @@ class PurchaseRequestModel extends BaseModel
      */
     public $store_card;
 
+    /**
+     * Direct API auth_type. Empty for a normal sale; 'preauth' for a hold.
+     *
+     * @see \Omnipay\Paytr\Constants\AuthType
+     * @var string
+     */
+    public $auth_type;
+
+    /**
+     * 3D secure sayfası dili.
+     *
+     * @var string
+     */
+    public $client_lang;
+
+    /**
+     * Non-3D test işlemlerinde başarısızlık simülasyonu (0 = normal).
+     *
+     * @var int
+     */
+    public $non3d_test_failed;
+
 
     public function generateToken($salt, $key, $id)
     {

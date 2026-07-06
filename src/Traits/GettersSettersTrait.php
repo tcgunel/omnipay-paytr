@@ -164,6 +164,36 @@ trait GettersSettersTrait
         return $this->setParameter('refId', $value);
     }
 
+    public function getClientLang()
+    {
+        return $this->getParameter('clientLang');
+    }
+
+    public function setClientLang($value)
+    {
+        return $this->setParameter('clientLang', $value);
+    }
+
+    public function getTestFailed()
+    {
+        return $this->getParameter('testFailed');
+    }
+
+    public function setTestFailed($value)
+    {
+        return $this->setParameter('testFailed', $value);
+    }
+
+    public function getNon3dTestFailed()
+    {
+        return $this->getParameter('non3dTestFailed');
+    }
+
+    public function setNon3dTestFailed($value)
+    {
+        return $this->setParameter('non3dTestFailed', $value);
+    }
+
     public function getEndpoint()
     {
         return $this->endpoint;

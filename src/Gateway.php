@@ -5,7 +5,9 @@ namespace Omnipay\Paytr;
 use Omnipay\Common\AbstractGateway;
 use Omnipay\Common\Message\AbstractRequest;
 use Omnipay\Paytr\Constants\PaymentType;
+use Omnipay\Paytr\Message\AuthorizeRequest;
 use Omnipay\Paytr\Message\BinLookupRequest;
+use Omnipay\Paytr\Message\CaptureRequest;
 use Omnipay\Paytr\Message\CardInquiryRequest;
 use Omnipay\Paytr\Message\CompletePurchaseRequest;
 use Omnipay\Paytr\Message\DeleteCardRequest;
@@ -13,6 +15,7 @@ use Omnipay\Paytr\Message\InstallmentRateInquiryRequest;
 use Omnipay\Paytr\Message\PaymentInquiryRequest;
 use Omnipay\Paytr\Message\PurchaseRequest;
 use Omnipay\Paytr\Message\RefundRequest;
+use Omnipay\Paytr\Message\VoidRequest;
 use Omnipay\Paytr\Traits\GettersSettersTrait;
 
 /**
@@ -21,7 +24,6 @@ use Omnipay\Paytr\Traits\GettersSettersTrait;
  * 2015, mobius.studio
  * http://www.github.com/tcgunel/omnipay-paytr
  * @method \Omnipay\Common\Message\NotificationInterface acceptNotification(array $options = [])
- * @method \Omnipay\Common\Message\RequestInterface completeAuthorize(array $options = [])
  */
 class Gateway extends AbstractGateway
 {
@@ -72,6 +74,41 @@ class Gateway extends AbstractGateway
     public function completePurchase(array $options = [])
     {
         return $this->createRequest(CompletePurchaseRequest::class, $options);
+    }
+
+    /**
+     * Pre-authorization (ön provizyon): place a hold without capturing.
+     * Server-to-server call to /odeme/auth with auth_type=preauth.
+     */
+    public function authorize(array $options = [])
+    {
+        return $this->createRequest(AuthorizeRequest::class, $options);
+    }
+
+    /**
+     * Finalize a 3D pre-authorization from the Bildirim (notification) POST.
+     * The validation is identical to a normal purchase notification, so this
+     * reuses CompletePurchaseRequest.
+     */
+    public function completeAuthorize(array $options = [])
+    {
+        return $this->createRequest(CompletePurchaseRequest::class, $options);
+    }
+
+    /**
+     * Capture (provizyon kapama) a previously authorized hold.
+     */
+    public function capture(array $options = [])
+    {
+        return $this->createRequest(CaptureRequest::class, $options);
+    }
+
+    /**
+     * Void / cancel (provizyon iptali) a previously authorized hold.
+     */
+    public function void(array $options = [])
+    {
+        return $this->createRequest(VoidRequest::class, $options);
     }
 
     public function listCard(array $options = []): AbstractRequest

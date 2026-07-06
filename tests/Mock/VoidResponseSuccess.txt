@@ -1,0 +1,6 @@
+HTTP/1.1 200 OK
+Server: nginx
+Content-Type: application/json
+Connection: close
+
+{"status": "success", "merchant_oid": "TESTPREAUTH1", "reference_no": "A1234567890123456"}

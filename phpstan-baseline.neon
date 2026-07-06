@@ -6,6 +6,11 @@ parameters:
 			path: src/Gateway.php
 
 		-
+			message: "#^Deprecated in PHP 8\\.4\\: Parameter \\#2 \\$domElement \\(DOMElement\\) is implicitly nullable via default value null\\.$#"
+			count: 1
+			path: src/Helpers/XmlDomConstruct.php
+
+		-
 			message: "#^PHPDoc tag @param for parameter \\$domElement with type DOMElement\\[Omnipay\\\\Paytr\\\\Helpers\\\\optional\\] is not subtype of native type DOMElement\\|null\\.$#"
 			count: 1
 			path: src/Helpers/XmlDomConstruct.php
@@ -16,12 +21,12 @@ parameters:
 			path: src/Helpers/XmlDomConstruct.php
 
 		-
-			message: "#^Call to function is_null\\(\\) with string will always evaluate to false\\.$#"
+			message: "#^Expression on left side of \\?\\? is not nullable\\.$#"
 			count: 1
-			path: src/Message/BinLookupRequest.php
+			path: src/Message/AuthorizeRequest.php
 
 		-
-			message: "#^Parameter \\#2 \\$numeric_prefix of function http_build_query expects string, null given\\.$#"
+			message: "#^Call to function is_null\\(\\) with string will always evaluate to false\\.$#"
 			count: 1
 			path: src/Message/BinLookupRequest.php
 
@@ -29,11 +34,6 @@ parameters:
 			message: "#^Method Omnipay\\\\Paytr\\\\Message\\\\BinLookupResponse\\:\\:getRedirectData\\(\\) should return array but returns null\\.$#"
 			count: 1
 			path: src/Message/BinLookupResponse.php
-
-		-
-			message: "#^Parameter \\#2 \\$numeric_prefix of function http_build_query expects string, null given\\.$#"
-			count: 1
-			path: src/Message/CardInquiryRequest.php
 
 		-
 			message: "#^Method Omnipay\\\\Paytr\\\\Message\\\\CardInquiryResponse\\:\\:getRedirectData\\(\\) should return array but returns null\\.$#"
@@ -61,29 +61,14 @@ parameters:
 			path: src/Message/CompletePurchaseResponse.php
 
 		-
-			message: "#^Parameter \\#2 \\$numeric_prefix of function http_build_query expects string, null given\\.$#"
-			count: 1
-			path: src/Message/DeleteCardRequest.php
-
-		-
 			message: "#^Method Omnipay\\\\Paytr\\\\Message\\\\DeleteCardResponse\\:\\:getRedirectData\\(\\) should return array but returns null\\.$#"
 			count: 1
 			path: src/Message/DeleteCardResponse.php
 
 		-
-			message: "#^Parameter \\#2 \\$numeric_prefix of function http_build_query expects string, null given\\.$#"
-			count: 1
-			path: src/Message/InstallmentRateInquiryRequest.php
-
-		-
 			message: "#^Method Omnipay\\\\Paytr\\\\Message\\\\InstallmentRateInquiryResponse\\:\\:getRedirectData\\(\\) should return array but returns null\\.$#"
 			count: 1
 			path: src/Message/InstallmentRateInquiryResponse.php
-
-		-
-			message: "#^Parameter \\#2 \\$numeric_prefix of function http_build_query expects string, null given\\.$#"
-			count: 1
-			path: src/Message/PaymentInquiryRequest.php
 
 		-
 			message: "#^Method Omnipay\\\\Paytr\\\\Message\\\\PaymentInquiryResponse\\:\\:getRedirectData\\(\\) should return array but returns null\\.$#"
@@ -96,9 +81,19 @@ parameters:
 			path: src/Message/PurchaseRequest.php
 
 		-
-			message: "#^Parameter \\#2 \\$numeric_prefix of function http_build_query expects string, null given\\.$#"
+			message: "#^Call to method getContent\\(\\) on an unknown class Symfony\\\\Component\\\\HttpFoundation\\\\Response\\.$#"
+			count: 3
+			path: src/Message/PurchaseResponse.php
+
+		-
+			message: "#^Call to method setContent\\(\\) on an unknown class Symfony\\\\Component\\\\HttpFoundation\\\\Response\\.$#"
+			count: 3
+			path: src/Message/PurchaseResponse.php
+
+		-
+			message: "#^Method Omnipay\\\\Paytr\\\\Message\\\\PurchaseResponse\\:\\:getRedirectResponse\\(\\) has invalid return type Symfony\\\\Component\\\\HttpFoundation\\\\Response\\.$#"
 			count: 1
-			path: src/Message/RefundRequest.php
+			path: src/Message/PurchaseResponse.php
 
 		-
 			message: "#^Method Omnipay\\\\Paytr\\\\Message\\\\RefundResponse\\:\\:getRedirectData\\(\\) should return array but returns null\\.$#"

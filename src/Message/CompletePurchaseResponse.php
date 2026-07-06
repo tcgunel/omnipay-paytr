@@ -37,6 +37,15 @@ class CompletePurchaseResponse extends AbstractResponse
         return 'OK';
     }
 
+    /**
+     * The reference_no carried on a pre-authorization Bildirim, needed to later
+     * capture or void the hold. Null for an ordinary sale notification.
+     */
+    public function getTransactionReference(): ?string
+    {
+        return $this->getData()->reference_no;
+    }
+
     public function getCode(): string
     {
         return $this->getData()->fail_code;

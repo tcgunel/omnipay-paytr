@@ -139,6 +139,14 @@ class CompletePurchaseRequestModel extends BaseModel
      */
     public $confirmation_hash;
 
+    /**
+     * Ön provizyon bildiriminde dönen referans numarası (capture/void için gerekli).
+     * Passthrough only — not part of the confirmation hash.
+     *
+     * @var string
+     */
+    public $reference_no;
+
     public function generateToken($salt, $key, $id)
     {
         $hash_string = $this->merchant_oid . $salt . $this->status . $this->total_amount;

@@ -56,7 +56,7 @@ class PaymentInquiryRequest extends RemoteAbstractRequest
                 'Content-Type' => 'application/x-www-form-urlencoded',
                 'Accept' => 'application/json',
             ],
-            http_build_query($data, null, '&')
+            http_build_query($data, '', '&')
         );
 
         return $this->createResponse($httpResponse);

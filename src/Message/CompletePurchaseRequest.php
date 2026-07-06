@@ -29,6 +29,7 @@ class CompletePurchaseRequest extends RemoteAbstractRequest
             'installment_count' => $this->getInstallment(),
             'fail_code' => $this->getFailCode(),
             'fail_reason' => $this->getFailReason(),
+            'reference_no' => $this->getTransactionReference(),
         ]);
 
         $data->generateToken(...$this->settings);
