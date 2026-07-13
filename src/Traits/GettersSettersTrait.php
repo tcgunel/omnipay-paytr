@@ -198,4 +198,44 @@ trait GettersSettersTrait
     {
         return $this->endpoint;
     }
+
+    public function getNoInstallment()
+    {
+        return $this->getParameter('noInstallment');
+    }
+
+    public function setNoInstallment($value)
+    {
+        return $this->setParameter('noInstallment', $value);
+    }
+
+    public function getMaxInstallment()
+    {
+        return $this->getParameter('maxInstallment');
+    }
+
+    public function setMaxInstallment($value)
+    {
+        return $this->setParameter('maxInstallment', $value);
+    }
+
+    public function getTimeoutLimit()
+    {
+        return $this->getParameter('timeoutLimit');
+    }
+
+    public function setTimeoutLimit($value)
+    {
+        return $this->setParameter('timeoutLimit', $value);
+    }
+
+    public function getLang()
+    {
+        return $this->getParameter('lang');
+    }
+
+    public function setLang($value)
+    {
+        return $this->setParameter('lang', $value);
+    }
 }

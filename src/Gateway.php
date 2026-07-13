@@ -11,6 +11,7 @@ use Omnipay\Paytr\Message\CaptureRequest;
 use Omnipay\Paytr\Message\CardInquiryRequest;
 use Omnipay\Paytr\Message\CompletePurchaseRequest;
 use Omnipay\Paytr\Message\DeleteCardRequest;
+use Omnipay\Paytr\Message\IframeTokenRequest;
 use Omnipay\Paytr\Message\InstallmentRateInquiryRequest;
 use Omnipay\Paytr\Message\PaymentInquiryRequest;
 use Omnipay\Paytr\Message\PurchaseRequest;
@@ -69,6 +70,16 @@ class Gateway extends AbstractGateway
     public function purchase(array $options = [])
     {
         return $this->createRequest(PurchaseRequest::class, $options);
+    }
+
+    /**
+     * iFrame API "1. Adım": request a payment token from /odeme/api/get-token.
+     * The customer is then sent to /odeme/guvenli/{token} to complete payment
+     * on PayTR (no card data touches the merchant).
+     */
+    public function iframeToken(array $options = []): AbstractRequest
+    {
+        return $this->createRequest(IframeTokenRequest::class, $options);
     }
 
     public function completePurchase(array $options = [])

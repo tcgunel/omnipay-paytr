@@ -1,0 +1,27 @@
+{
+  "merchantSalt": "salt",
+  "merchantKey": "key",
+  "merchantId": "id",
+
+  "transactionId": "6123ad8ba9cb76123ad8ba9cb9",
+  "amount": 12.34,
+  "clientIp": "127.0.0.1",
+  "card": {
+    "firstName": "Example",
+    "lastName": "User",
+    "email": "dummy-email@example.com",
+    "billingAddress1": "123 Billing St",
+    "billingAddress2": "Billsville",
+    "billingPhone": "5554443322"
+  },
+  "items": [
+    {
+      "name": "Perspiciatis et facilis tempore facilis.",
+      "description": "A pet toy.",
+      "quantity": 1,
+      "price": 12.34
+    }
+  ],
+  "returnUrl": "https://iparatest.com/omnipay/paytr/usage/payment-success.php",
+  "cancelUrl": "https://iparatest.com/omnipay/paytr/usage/payment-failure.php"
+}
