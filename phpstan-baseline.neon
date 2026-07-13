@@ -66,6 +66,11 @@ parameters:
 			path: src/Message/DeleteCardResponse.php
 
 		-
+			message: "#^Expression on left side of \\?\\? is not nullable\\.$#"
+			count: 2
+			path: src/Message/IframeTokenRequest.php
+
+		-
 			message: "#^Method Omnipay\\\\Paytr\\\\Message\\\\InstallmentRateInquiryResponse\\:\\:getRedirectData\\(\\) should return array but returns null\\.$#"
 			count: 1
 			path: src/Message/InstallmentRateInquiryResponse.php
